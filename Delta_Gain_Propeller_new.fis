@@ -1,0 +1,63 @@
+[System]
+Name='Delta_Gain_Propeller_new'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=3
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Error'
+Range=[-4.1 6.1]
+NumMFs=3
+MF1='Negatif':'linzmf',[-4 0]
+MF2='Zero':'trimf',[-3 0 3]
+MF3='Positif':'linsmf',[0 6]
+
+[Input2]
+Name='Delta Error'
+Range=[-17.3 13.3]
+NumMFs=3
+MF1='Negatif':'linzmf',[-17 0]
+MF2='Zero':'trimf',[-6 0 6]
+MF3='Positif':'linsmf',[0 13]
+
+[Output1]
+Name='Delta_Kp'
+Range=[-20.2 20.2]
+NumMFs=3
+MF1='Negatif':'linzmf',[-20 0]
+MF2='Zero':'trimf',[-8 0 8]
+MF3='Positif':'linsmf',[0 20]
+
+[Output2]
+Name='Delta_Ki'
+Range=[-10.2 10.2]
+NumMFs=3
+MF1='Negaitf':'linzmf',[-10 0]
+MF2='Zero':'trimf',[-4 0 4]
+MF3='Positif':'linsmf',[0 10]
+
+[Output3]
+Name='Delta_Kd'
+Range=[-0.26 0.26]
+NumMFs=3
+MF1='Negatif':'linzmf',[-0.25 0]
+MF2='Zero':'trimf',[-0.15 0 0.15]
+MF3='Positif':'linsmf',[0 0.25]
+
+[Rules]
+1 1, 2 1 1 (1) : 1
+2 1, 3 2 1 (1) : 1
+3 1, 3 2 2 (1) : 1
+1 2, 1 1 1 (1) : 1
+2 2, 2 3 2 (1) : 1
+3 2, 3 3 3 (1) : 1
+1 3, 1 2 2 (1) : 1
+2 3, 1 2 3 (1) : 1
+3 3, 2 3 3 (1) : 1
