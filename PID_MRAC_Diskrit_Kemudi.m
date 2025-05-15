@@ -1,4 +1,4 @@
-function PID_MRAC_Diskrit_Translasi(block)
+function PID_MRAC_Diskrit (block)
 % Level-2 MATLAB S-Function for PID MRAC Translasi (Throttle Control)
 
     setup(block);

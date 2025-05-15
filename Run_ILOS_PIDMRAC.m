@@ -22,7 +22,7 @@ clear all
     desired_heading     =180;    % Desired heading in degrees 0 - 360   
     
     %Heading controller PID
-    H_control_pid=[300 20 100];
+    H_control_pid=[60 4 12];
 
     phithepsi0=[0 0 init_heading*pi/180];         %(rad)
 
@@ -98,8 +98,8 @@ y_8 = [y_ling y_ling];
 x_elips = 40 * cos(theta);
 y_elips = 20 * sin(theta);
 
-x_custom = [0 3 6 9 12 15 18 21 24 27 30 33 36 33 30 27 24 21 18 15 12 9 6 3 0];
-y_custom = [0 5 8 12 15 17 18 17 15 12 8 5 0 -5 -8 -12 -15 -17 -18 -17 -15 -12 -8 -5 0];
+x_custom = [1 2 3 4 5 6];
+y_custom = [10 10 10 10 10 10];
 
 % Pastikan waypoint dimulai dari (0, 0)
 x_elips = x_elips - 40; % Geser semua nilai X agar dimulai dari 0
@@ -107,6 +107,10 @@ x_elips = abs(x_elips);
 
 x_8e = [x_elips(1:50) x_elips(1:50)+60 x_elips(51:100)+60 x_elips(51:100)];
 y_8e = [y_elips y_elips];
+
+x_s = [0 30 75 100];
+y_s = [0 0 30 30];
+
 
 %% 
 

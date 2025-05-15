@@ -27,7 +27,7 @@ clear all
     phithepsi0=[0 0 init_heading*pi/180];         %(rad)
 
     
-    controller = 1 ; % 1 = PID ; 2 = PID FUZZY
+    controller = 3 ; % 1 = PID ; 2 = PID FUZZY
 %% Waypoint Guidance
     %Guidance Gain 
     Gpi=[2 0.1]; %[Pterm Iterm]
