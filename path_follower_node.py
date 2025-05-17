@@ -7,6 +7,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'utils'))
 
 # Sekarang Anda bisa mengimpor file dari folder 'utils'
+import numpy as np
 import rospy
 from marker_publisher import MarkerPublisher
 from basic_pid import BasicPID
@@ -59,6 +60,12 @@ class PathFollower:
         if not self.boat_tf.is_tf_available:
             rospy.logwarn("Transform data not available")
             return 0
+        
+        # Ambil posisi aktual USV (actual_output)
+        actual_output = self.boat_tf.pos  # Posisi aktual dari boat_tf
+
+        # Ambil posisi waypoint target (reference_output)
+        reference_output = self.main_path.poses[self.path_idx].pose.position
 
         # Check if arrived to last waypoint
         if self.is_arrived_last_WP():
